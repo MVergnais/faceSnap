@@ -1,21 +1,27 @@
 <!-- méthode la plus simple pour afficher le contenu d'une variable dans le template -->
 <!--  {{ }} string interpolation -->
-<div class="face-snap-card">
-<h2>{{ FaceSnapInterface.title }}</h2>
+<div class="face-snap-card" [ngClass]="{ snapped:userHasSnapped }">
+  <h2>{{ FaceSnapInterface.title | titlecase }}</h2>
 
-@if (FaceSnapInterface.location){ <!-- Si la localisation existe on affiche celle-ci -->
-    <p>Localisation: {{FaceSnapInterface.location}}</p>
-}
-<img [src]="FaceSnapInterface.imageUrl" [alt]="FaceSnapInterface.title">
-<!-- lier cette URL dynamique à l'attribut src  d'une balise  <img>  : attribute binding -->
-<p>{{ FaceSnapInterface.description }}</p>
-<p>FaceSnap créée le {{ FaceSnapInterface.createdAt }}</p>
+  @if (FaceSnapInterface.location){
+  <!-- Si la localisation existe on affiche celle-ci -->
+  <p>Localisation: {{ FaceSnapInterface.location }}</p>
+  } @else {
+  <p>Localisation non spécifiée</p>
+  <!-- si la localisation est non spécifiée il retourne  Localisation non spécifiée -->
+  }
 
-<!-- liaison par événement, ou event binding. Là où vous avez utilisé 
+  <img [src]="FaceSnapInterface.imageUrl" [alt]="FaceSnapInterface.title" />
+  <!-- lier cette URL dynamique à l'attribut src  d'une balise  <img>  : attribute binding -->
+  <p>{{ FaceSnapInterface.description }}</p>
+  <p>FaceSnap créée le {{ FaceSnapInterface.createdAt | date: 'd MMM yyyy, à HH:mm' }}</p>
+
+  <!-- liaison par événement, ou event binding. Là où vous avez utilisé 
 les crochets pour lier aux attributs, vous allez utiliser des parenthèses  ()  
 pour lier aux événements  -->
-<p>
-<button (click)="onSnap()"> snapButtonText </button>
-🤌 {{ FaceSnapInterface.snaps }}
-</p>
+  <p>
+    <button (click)="onSnap()">{{ snapButtonText }}</button>
+    <span [ngStyle]="{ color: 'rgb(0, ' + FaceSnapInterface.snaps + ', 0)'}"> 🤌 {{ FaceSnapInterface.snaps }} </span>
+  </p>
+<!--  grace à ngStyle on peut changer de manière dynamique les éléments -->
 </div>

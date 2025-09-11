@@ -12,32 +12,40 @@ import { FaceSnapInterface } from './models/face-snap.interface';
   styleUrl: './app.scss'
 })
 export class App implements OnInit {
+
+  /* On va créér un tableau pour récuperer nos données du modèle */
+  faceSnaps!:FaceSnapInterface[];
+  
   mySnap!: FaceSnapInterface;
   myOtherSnap!:FaceSnapInterface;
   myLastSanp!:FaceSnapInterface;
 
-  ngOnInit() {
-    this.mySnap = new FaceSnapInterface(
+  ngOnInit(): void {
+    this.faceSnaps = [ /* on a un tableau avec autant de modèles de faceSnap que le veut */
+      new FaceSnapInterface(
       'Archibald',
       'Mon meilleur ami depuis tout petit !',
       'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg',
       new Date(),
       10
-    );
-    this.myOtherSnap = new FaceSnapInterface(
+    ),
+    new FaceSnapInterface (
       'Three Rock Mountain',
       'Un endroit magnifique pour les randonnées.',
       'https://cdn.pixabay.com/photo/2022/09/03/11/46/rocky-mountain-7429407_1280.jpg',
       new Date(),
       5
-    );
-    this.myLastSanp! = new FaceSnapInterface(
+    ),
+    new FaceSnapInterface (
       'Un bon repas',
       'Mmmh ! que c\'est bon',
       'https://cdn.pixabay.com/photo/2022/05/20/08/55/pasta-7209002_1280.jpg',
       new Date(),
-      8
-    );
-    this.myOtherSnap.setlocation('à la montagne') /* Rajout de la localisation */
+      156
+    )
+    ];
+  
+    this.faceSnaps[1].setlocation('à la montagne') /* Rajout de la localisation */
+    
   }
 }

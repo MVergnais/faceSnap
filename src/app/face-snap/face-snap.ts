@@ -1,10 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FaceSnapInterface } from '../models/face-snap.interface';
+import { DatePipe, LowerCasePipe, NgClass, NgStyle, TitleCasePipe, UpperCasePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-face-snap',
-  imports: [],
+  imports: [
+    NgStyle, /* Permet d'ajouter un comportement */
+    NgClass, /* Permet d'ajouter une classe */
+    /* Ne sont pas appliqué dans face-snap.html, c'est à titre d'exemple */
+    //UpperCasePipe, /* pour modifier la casse d'un texte en utilisant pipe */
+    //LowerCasePipe,
+    TitleCasePipe,
+    DatePipe
+  ],
   templateUrl: './face-snap.html',
   styleUrl: './face-snap.scss'
 })
