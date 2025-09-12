@@ -1,6 +1,13 @@
 <!-- méthode la plus simple pour afficher le contenu d'une variable dans le template -->
 <!--  {{ }} string interpolation -->
 <div class="face-snap-card" [ngClass]="{ snapped:userHasSnapped }">
+  <h1>{{ myLargeNumber | number: '1.0-0' }}</h1> <!-- Minimum 1 chiffre avant la virgule. Minimum chiffre après la virgule sans mocifier la donnée sousjassante -->
+  <h3>{{ myLargePercentage | percent }}</h3> <!-- si on a besoin de la précision d'affichage pour une application 
+  on doit utliser percent: '1.0-0'-->
+  <h3>{{ myprice | currency: 'EUR' : 'code' }}</h3> <!-- on lui fait passer la monnai et le type d'affichage. 
+  Si on enleve 'code' on affiche € -->
+
+  
   <h2>{{ FaceSnapInterface.title | titlecase }}</h2>
 
   @if (FaceSnapInterface.location){
@@ -14,7 +21,7 @@
   <img [src]="FaceSnapInterface.imageUrl" [alt]="FaceSnapInterface.title" />
   <!-- lier cette URL dynamique à l'attribut src  d'une balise  <img>  : attribute binding -->
   <p>{{ FaceSnapInterface.description }}</p>
-  <p>FaceSnap créée le {{ FaceSnapInterface.createdAt | date: 'd MMM yyyy, à HH:mm' }}</p>
+  <p>FaceSnap créée le {{ FaceSnapInterface.createdAt | date: 'd MMMM yyyy, à HH:mm' }}</p>
 
   <!-- liaison par événement, ou event binding. Là où vous avez utilisé 
 les crochets pour lier aux attributs, vous allez utiliser des parenthèses  ()  

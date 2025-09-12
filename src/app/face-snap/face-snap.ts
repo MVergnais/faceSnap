@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FaceSnapInterface } from '../models/face-snap.interface';
-import { DatePipe, LowerCasePipe, NgClass, NgStyle, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe, NgClass, NgStyle, PercentPipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 
 
 @Component({
@@ -12,7 +12,10 @@ import { DatePipe, LowerCasePipe, NgClass, NgStyle, TitleCasePipe, UpperCasePipe
     //UpperCasePipe, /* pour modifier la casse d'un texte en utilisant pipe */
     //LowerCasePipe,
     TitleCasePipe,
-    DatePipe
+    DatePipe,
+    DecimalPipe,
+    PercentPipe,
+    CurrencyPipe
   ],
   templateUrl: './face-snap.html',
   styleUrl: './face-snap.scss'
@@ -27,6 +30,11 @@ export class FaceSnap implements OnInit {
 
   snapButtonText!:string;
   userHasSnapped!:boolean;
+  myLargeNumber: number = 4667916.76 /* Pour faire les tests pour formater des nombres */
+  myLargePercentage: number = 0.3367
+  myprice: number = 336.75
+  /* A chaque nouvelles variables, pensez à l'importer dans imports:[] */
+
 
 ngOnInit(): void{ // Méthode elle permet d'initialiser des propriétés
   this.snapButtonText = 'Oh Snap !';
