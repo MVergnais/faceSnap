@@ -12,10 +12,12 @@ import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe, NgClass, NgStyle, P
     //UpperCasePipe, /* pour modifier la casse d'un texte en utilisant pipe */
     //LowerCasePipe,
     TitleCasePipe,
-    DatePipe,
+    /*  ----------------------------------------------------- */
+    /* Pour afficher d'autres élément comme le prix, la date */
+    /* DatePipe,
     DecimalPipe,
     PercentPipe,
-    CurrencyPipe
+    CurrencyPipe */
   ],
   templateUrl: './face-snap.html',
   styleUrl: './face-snap.scss'
