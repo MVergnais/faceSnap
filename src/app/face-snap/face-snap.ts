@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FaceSnapInterface } from '../models/face-snap.interface';
 import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe, NgClass, NgStyle, PercentPipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { FaceSnapsService } from '../services/face-snap.service';
 
 
 @Component({
@@ -32,10 +33,14 @@ export class FaceSnap implements OnInit {
 
   snapButtonText!:string;
   userHasSnapped!:boolean;
-  myLargeNumber: number = 4667916.76 /* Pour faire les tests pour formater des nombres */
-  myLargePercentage: number = 0.3367
-  myprice: number = 336.75
+  // myLargeNumber: number = 4667916.76 /* Pour faire les tests pour formater des nombres */
+  // myLargePercentage: number = 0.3367
+  //myprice: number = 336.75
   /* A chaque nouvelles variables, pensez à l'importer dans imports:[] */
+
+  constructor(private faceSnapService : FaceSnapsService){
+
+  }
 
 
 ngOnInit(): void{ // Méthode elle permet d'initialiser des propriétés
@@ -52,14 +57,14 @@ onSnap(): void {
   }
 // Si l'utlisateur n'a pas encore clické
 unSnap() {
-    this.FaceSnapInterface.removeSnap();
+    this.faceSnapService.snapFaceSnapById(this.FaceSnapInterface.id, 'unsnap'); // passe par le service
     this.snapButtonText = 'Oh Snap!';
     this.userHasSnapped = false;
   }
 
 // Si l'utlisateur a clické
 snap() {
-    this.FaceSnapInterface.addSnap();
+    this.faceSnapService.snapFaceSnapById(this.FaceSnapInterface.id, 'snap'); // passe par le service
     this.snapButtonText = 'Oops, unSnap!';
     this.userHasSnapped = true;
 }
