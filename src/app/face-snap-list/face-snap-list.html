@@ -1,2 +1,3 @@
-@for (faceSnap of faceSnaps; track faceSnap.title){ <!-- faceSnap alias de notre tableau. Permet d'indentifier les differents element à l'intrieur d'un tableau -->
-    <app-face-snap [FaceSnapInterface]="faceSnap"/>}
+@for (faceSnap of faceSnaps; track faceSnap.title) {
+  <app-face-snap-list [faceSnaps]="faceSnap" />
+}

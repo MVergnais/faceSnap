@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FaceSnapInterface } from '../models/face-snap.interface';
-import { FaceSnap } from '../face-snap/face-snap';
 import { FaceSnapsService } from '../services/face-snap.service';
+import { FaceSnap } from '../face-snap/face-snap';
 
 @Component({
   selector: 'app-face-snap-list',
-  imports: [FaceSnap],
+  imports: [],
   templateUrl: './face-snap-list.html',
   styleUrl: './face-snap-list.scss'
 })

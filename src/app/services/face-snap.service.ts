@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FaceSnapInterface } from '../models/face-snap.interface';
 import { SnapType } from '../models/snap-type.type';
+import { FaceSnapList } from '../face-snap-list/face-snap-list';
+import { SingleFaceSnap } from '../single-face-snap/single-face-snap';
+import { FaceSnap } from '../face-snap/face-snap';
 
 
 @Injectable({
@@ -38,16 +41,17 @@ export class FaceSnapsService {
   getFaceSnaps(): FaceSnapInterface[] {
     return [...this.faceSnaps]; /* on revoit une copie de ce tableau */
   }
-
-
-/*  snap avec un id donnée */
-  snapFaceSnapById(faceSnapId: string, snapType : SnapType): void {
-    const foundFaceSnap: FaceSnapInterface | undefined = this.faceSnaps.find(
-      faceSnap => faceSnap.id === faceSnapId
-    );
+  getFaceSnapById(faceSnapId: string): FaceSnapInterface {
+    const foundFaceSnap : FaceSnapInterface | undefined = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId);
     if (!foundFaceSnap) {
       throw new Error('FaceSnap not found');
     }
-    foundFaceSnap.snap(snapType); // on a typé le snap, fonctionne car c'est une instance du modele faceSnap interface
+    return foundFaceSnap;
+  }
+
+/*  snap avec un id donnée */
+  snapFaceSnapById(FaceSnapId: string, snapType : SnapType): void {
+    const faceSnap = this.getFaceSnapById(FaceSnapId)
+    this.faceSnaps.snap(snapType); // on a typé le snap, fonctionne car c'est une instance du modele faceSnap interface
   }
 }

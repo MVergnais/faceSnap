@@ -1,4 +1,3 @@
-import { FaceSnap } from "../face-snap/face-snap";
 import { SnapType } from "./snap-type.type";
 
 export class FaceSnapInterface {
@@ -14,7 +13,7 @@ export class FaceSnapInterface {
 
   this.id = crypto.randomUUID().substring (0,8);/* universally unique identifier */
   // substring c'est pour lui demander 8 caractères pour le code généré
-     console.log(this);  
+console.log(this);  
 }
 
   addSnap(): void {

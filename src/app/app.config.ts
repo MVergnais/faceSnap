@@ -2,7 +2,6 @@ import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners, provi
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -11,3 +10,4 @@ export const appConfig: ApplicationConfig = {
     {provide: LOCALE_ID, useValue:'fr-FR'} /* Pour changer la langue par rapport au pays */
   ]
 };
+
