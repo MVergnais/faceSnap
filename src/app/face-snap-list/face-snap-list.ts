@@ -5,14 +5,14 @@ import { FaceSnap } from '../face-snap/face-snap';
 
 @Component({
   selector: 'app-face-snap-list',
-  imports: [],
+  imports: [FaceSnap],
   templateUrl: './face-snap-list.html',
   styleUrl: './face-snap-list.scss'
 })
 
 export class FaceSnapList implements OnInit{
 /* On va créér un tableau pour récuperer nos données du modèle */
-  faceSnaps!:FaceSnapInterface[];
+  faceSnaps!: FaceSnapInterface[];
   
   mySnap!: FaceSnapInterface;
   myOtherSnap!:FaceSnapInterface;

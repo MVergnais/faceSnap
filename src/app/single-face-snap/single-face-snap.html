@@ -11,19 +11,19 @@
   Si on enleve 'code' on affiche € -->
 <!-- ------------------------------------------------ -->
   
-  <h2>{{ faceSnapInterface.title | titlecase }}</h2>
+  <h2>{{ faceSnap.title | titlecase }}</h2>
   <a routerLink="/facesnaps">BACK</a>
-  @if (faceSnapInterface.location){
+  @if (faceSnap.location){
   <!-- Si la localisation existe on affiche celle-ci -->
-  <p>Localisation: {{ faceSnapInterface.location }}</p>
+  <p>Localisation: {{ faceSnap.location }}</p>
   } @else {
   <p>Localisation non spécifiée</p>
   <!-- si la localisation est non spécifiée il retourne  Localisation non spécifiée -->
   }
 
-  <img [src]="faceSnapInterface.imageUrl" [alt]="faceSnapInterface.title" />
+  <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" />
   <!-- lier cette URL dynamique à l'attribut src  d'une balise  <img>  : attribute binding -->
-  <p>{{ faceSnapInterface.description }}</p>
+  <p>{{ faceSnap.description }}</p>
 <!--   <p>FaceSnap créée le {{ FaceSnapInterface.createdAt | date: 'd MMMM yyyy, à HH:mm' }}</p> -->
 
   <!-- liaison par événement, ou event binding. Là où vous avez utilisé 
@@ -31,7 +31,7 @@ les crochets pour lier aux attributs, vous allez utiliser des parenthèses  ()
 pour lier aux événements  -->
   <p>
     <button (click)="onSnap()">{{ snapButtonText }}</button>
-    <span [ngStyle]="{ color: 'rgb(0, ' + faceSnapInterface.snaps + ', 0)'}"> 🤌 {{ faceSnapInterface.snaps }} </span>
+    <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)'}"> 🤌 {{ faceSnap.snaps }} </span>
   </p>
 <!--  grace à ngStyle on peut changer de manière dynamique les éléments -->
 </div>

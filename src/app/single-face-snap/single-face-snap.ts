@@ -3,9 +3,7 @@ import { FaceSnapInterface } from '../models/face-snap.interface';
 import { DatePipe, NgClass, NgStyle, TitleCasePipe } from '@angular/common';
 import { FaceSnapsService } from '../services/face-snap.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FaceSnapList } from '../face-snap-list/face-snap-list';
-
-
+import { FaceSnap } from '../face-snap/face-snap';
 
 @Component({
   selector: 'app-single-face-snap',
@@ -21,7 +19,7 @@ import { FaceSnapList } from '../face-snap-list/face-snap-list';
 
 // le component doit implémenter l'interface  OnInit
 export class SingleFaceSnap implements OnInit {
-  faceSnapInterface!: FaceSnapInterface;
+  faceSnap!: FaceSnapInterface;
   snapButtonText!: string;
   userHasSnapped!: boolean;
  
@@ -43,14 +41,14 @@ onSnap(): void {
 
 // Si l'utlisateur n'a pas encore clické
 unSnap() {
-  this.faceSnapsService.snapFaceSnapById(this.faceSnapInterface.id, 'unsnap'); // passe par le service
+  this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'unsnap'); // passe par le service
   this.snapButtonText = 'Oh Snap!';
   this.userHasSnapped = false;
 }
 
 // Si l'utlisateur a clické
 snap() {
-  this.faceSnapsService.snapFaceSnapById(this.faceSnapInterface.id, 'snap'); // passe par le service
+  this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'snap'); // passe par le service
   this.snapButtonText = 'Oops, unSnap!';
   this.userHasSnapped = true;
 }
@@ -61,6 +59,6 @@ snap() {
   }
   private getFaceSnap(){
     const faceSnapId = this.route.snapshot.params['id'];
-    this.faceSnapInterface = this.faceSnapsService.getFaceSnapById('faceSnapId');
+    this.faceSnap = this.faceSnapsService.getFaceSnapById('faceSnapId');
     }
 }
